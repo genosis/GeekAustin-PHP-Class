@@ -7,28 +7,23 @@ include 'includes/header.php';
 	<br><br>
 	<a href="post.php">Post</a>
 	
+	
 	<? $apost = getPost(); ?>
  
+ 	<h1>Posts for <?php echo(getUsername()); ?> are: </h1><br>
 	<table border=1>
 	
 	<?php 
-		echo"var dump is: <br>";
-		var_dump($apost);
-		
-		while( $apost ){
-			//	echo($apost['post']);
+		// Loop to cycle through array of posts returned from getPost() above	
 			
-		echo("<tr><td>Posted on: " . $apost['created_at'] . "</td></tr> ");
+		foreach($apost as $key ){
+				echo($apost['post']);
+			
+		echo("<tr><td>" . date("m/d/Y g:i:s A", $key['created_at'] ) . 
+		     "</td><td>" . $key['post'] . "</td></tr> ");
 		
 		}
-	/*
-			<td> <? while( $result ){
-				echo($apost['post']);
-			} ?> on 
-			<? echo( date('m-d-Y  h:m a', $apost['created_at'] ) );?> 
-			</td>
-		</tr>
-	*/
+
   
   	?>
 	</table>

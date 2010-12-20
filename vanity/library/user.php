@@ -154,6 +154,7 @@ function getPost(){
 
 	global $db;
 	$id =  getUserId();
+	$posts = array();
 	
     $sql = "SELECT *
             FROM posts
@@ -163,12 +164,11 @@ function getPost(){
     
 	while ($result = $results->fetch(PDO::FETCH_ASSOC)) {
 		echo"<pre>";
+		$posts[]= $result;
     	//echo("test post: " . $result['post'] . "<br>");
+    	//var_dump($result);
     	echo"</pre>";
 	}
 	
-	echo"printR in getPost function is: <br>";
-	print_r($result);
-	
-	return $result;
+	return $posts;
 }
